@@ -6,6 +6,10 @@ app.get("/", (req, res) => {
   res.send("Hello World! Welcome to express");
 });
 
+app.get("/:name", (req, res) => {
+  res.send(`Hello ${req.params.name}! Welcome to express`);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
