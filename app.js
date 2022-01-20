@@ -6,7 +6,18 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const buah = [
+    { name: "Apel" },
+    { name: "Melon" },
+    { name: "Mangga" },
+    { name: "Jeruk" },
+  ];
+
+  res.render("index", {
+    name: "nada hasni",
+    age: 22,
+    buah,
+  });
 });
 
 app.get("/:name", (req, res) => {
