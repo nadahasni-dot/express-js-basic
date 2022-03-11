@@ -1,28 +1,15 @@
 const express = require("express");
+const router = require("./router");
 const app = express();
 const port = 3000;
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  const buah = [
-    { name: "Apel" },
-    { name: "Melon" },
-    { name: "Mangga" },
-    { name: "Jeruk" },
-  ];
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-  res.render("index", {
-    name: "nada hasni",
-    age: 22,
-    buah,
-  });
-});
-
-app.get("/:name", (req, res) => {
-  res.send(`Hello ${req.params.name}! Welcome to express`);
-});
+app.use(router);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
